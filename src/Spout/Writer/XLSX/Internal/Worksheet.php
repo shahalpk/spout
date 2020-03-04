@@ -185,7 +185,7 @@ EOD;
         $rowXML = '<row r="' . $rowIndex . '" spans="1:' . $numCells . '">';
 
         foreach($dataRow as $cellValue) {
-            $rowXML .= $this->getCellXML($rowIndex, $cellNumber, $cellValue, $style->getId());
+            $rowXML .= $this->getCellXML($rowIndex, $cellNumber, utf8_encode($cellValue), $style->getId());
             $cellNumber++;
         }
 
