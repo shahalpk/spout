@@ -185,7 +185,7 @@ EOD;
         $rowXML = '<row r="' . $rowIndex . '" spans="1:' . $numCells . '">';
 
         foreach($dataRow as $cellValue) {
-            $rowXML .= $this->getCellXML($rowIndex, $cellNumber, utf8_encode($cellValue), $style->getId());
+            $rowXML .= $this->getCellXML($rowIndex, $cellNumber, $cellValue), $style->getId());
             $cellNumber++;
         }
 
@@ -216,7 +216,7 @@ EOD;
         if (CellHelper::isFormulaString($cellValue)) {
             $cellXML .= '><f>'.substr($cellValue,1).'</f><v>0</v></c>';
         } else if (CellHelper::isNonEmptyString($cellValue)) {
-            $cellXML .= $this->getCellXMLFragmentForNonEmptyString($cellValue);
+            $cellXML .= $this->getCellXMLFragmentForNonEmptyString(utf8_encode($cellValue));
         } else if (CellHelper::isBoolean($cellValue)) {
             $cellXML .= ' t="b"><v>' . intval($cellValue) . '</v></c>';
         } else if (CellHelper::isNumeric($cellValue)) {
